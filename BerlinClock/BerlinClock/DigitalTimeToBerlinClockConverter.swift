@@ -14,21 +14,19 @@ nonisolated struct DigitalTimeToBerlinClockConverter {
     
     func fiveMinutesRow(minutes: Int) -> String {
         let litAmount = minutes / 5
+        let unlitAmount = 11 - litAmount
+        let unlitString = String(repeating: "0", count: unlitAmount)
         
-        var output = ""
-        for num in 1...11 {
-            if num <= litAmount {
-                if num % 3 == 0 {
-                    output += "R"
-                } else {
-                    output += "Y"
-                }
+        var litString = ""
+        for num in 0..<litAmount {
+            if (num + 1) % 3 == 0 {
+                litString += "R"
             } else {
-                output += "0"
+                litString += "Y"
             }
         }
         
-        return output
+        return litString + unlitString
     }
     
 }
