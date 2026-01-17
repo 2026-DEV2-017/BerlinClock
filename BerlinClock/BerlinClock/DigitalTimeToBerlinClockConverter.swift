@@ -9,8 +9,10 @@ nonisolated struct DigitalTimeToBerlinClockConverter {
             return "Y000"
         } else if minutes == 2 {
             return "YY00"
-        } else {
+        } else if minutes == 3 {
             return "YYY0"
+        } else {
+            return "YYYY"
         }
     }
     
