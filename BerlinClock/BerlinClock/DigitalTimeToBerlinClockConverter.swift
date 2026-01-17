@@ -13,7 +13,7 @@ nonisolated struct DigitalTimeToBerlinClockConverter {
     }
     
     func fiveMinutesRow(minutes: Int) -> String {
-        return ""
+        return "00000000000"
     }
     
 }
