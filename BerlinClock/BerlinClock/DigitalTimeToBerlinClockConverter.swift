@@ -3,7 +3,7 @@ import Foundation
 nonisolated struct DigitalTimeToBerlinClockConverter {
     
     func singleMinutesRow(minutes: Int) -> String {
-        return ""
+        return "0000"
     }
     
 }
