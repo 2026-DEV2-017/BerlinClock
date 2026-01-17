@@ -38,6 +38,9 @@ struct DigitalTimeToBerlinClockConverterTests {
                 (minutes: 0, expectedResult: "00000000000"),
                 (minutes: 5, expectedResult: "Y0000000000"),
                 (minutes: 59, expectedResult: "YYRYYRYYRYY"),
+                (minutes: 4, expectedResult: "00000000000"),
+                (minutes: 23, expectedResult: "YYRY0000000"),
+                (minutes: 35, expectedResult: "YYRYYRY0000"),
             ]
         )
         func fiveMinutesRow(minutes: Int, expectedResult: String) {
