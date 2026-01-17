@@ -35,7 +35,8 @@ struct DigitalTimeToBerlinClockConverterTests {
         @Test(
             "Given an initialised converter, when calculating the 5 minutes row, then the correct lamp output is returned",
             arguments: [
-                (minutes: 0, expectedResult: "00000000000")
+                (minutes: 0, expectedResult: "00000000000"),
+                (minutes: 5, expectedResult: "Y0000000000")
             ]
         )
         func fiveMinutesRow(minutes: Int, expectedResult: String) {
