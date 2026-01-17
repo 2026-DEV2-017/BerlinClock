@@ -3,17 +3,13 @@ import Foundation
 nonisolated struct DigitalTimeToBerlinClockConverter {
     
     func singleMinutesRow(minutes: Int) -> String {
-        if minutes == 0 {
-            return "0000"
-        } else if minutes == 1 {
-            return "Y000"
-        } else if minutes == 2 {
-            return "YY00"
-        } else if minutes == 3 {
-            return "YYY0"
-        } else {
-            return "YYYY"
-        }
+        let litAmount = minutes % 5
+        let unlitAmount = 4 - litAmount
+        
+        let litString = String(repeating: "Y", count: litAmount)
+        let unlitString = String(repeating: "0", count: unlitAmount)
+        
+        return litString + unlitString
     }
     
 }
