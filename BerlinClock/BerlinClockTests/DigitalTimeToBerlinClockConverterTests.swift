@@ -21,12 +21,29 @@ struct DigitalTimeToBerlinClockConverterTests {
                 (minutes: 35, expectedResult: "0000"),
             ]
         )
-        func singleMinutes(minutes: Int, expectedResult: String) {
+        func singleMinutesRow(minutes: Int, expectedResult: String) {
             // Given
             let converter = DigitalTimeToBerlinClockConverter()
             
             // When
             let result = converter.singleMinutesRow(minutes: minutes)
+            
+            // Then
+            #expect(result == expectedResult)
+        }
+        
+        @Test(
+            "Given an initialised converter, when calculating the 5 minutes row, then the correct lamp output is returned",
+            arguments: [
+                (minutes: 0, expectedResult: "00000000000")
+            ]
+        )
+        func fiveMinutesRow(minutes: Int, expectedResult: String) {
+            // Given
+            let converter = DigitalTimeToBerlinClockConverter()
+            
+            // When
+            let result = converter.fiveMinutesRow(minutes: minutes)
             
             // Then
             #expect(result == expectedResult)
