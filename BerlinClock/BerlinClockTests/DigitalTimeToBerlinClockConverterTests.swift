@@ -14,6 +14,7 @@ struct DigitalTimeToBerlinClockConverterTests {
                 (minutes: 2, expectedResult: "YY00"),
                 (minutes: 3, expectedResult: "YYY0"),
                 (minutes: 4, expectedResult: "YYYY"),
+                (minutes: 5, expectedResult: "0000"),
             ]
         )
         func singleMinutes(minutes: Int, expectedResult: String) async throws {
