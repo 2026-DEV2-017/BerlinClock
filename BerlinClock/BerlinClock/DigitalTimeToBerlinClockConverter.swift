@@ -16,9 +16,13 @@ nonisolated struct DigitalTimeToBerlinClockConverter {
         let litAmount = minutes / 5
         
         var output = ""
-        for num in 0..<11 {
-            if num < litAmount {
-                output += "Y"
+        for num in 1...11 {
+            if num <= litAmount {
+                if num % 3 == 0 {
+                    output += "R"
+                } else {
+                    output += "Y"
+                }
             } else {
                 output += "0"
             }
