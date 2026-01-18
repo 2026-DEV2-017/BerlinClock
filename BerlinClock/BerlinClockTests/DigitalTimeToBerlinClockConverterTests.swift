@@ -32,6 +32,11 @@ struct DigitalTimeToBerlinClockConverterTests {
             #expect(result == expectedResult)
         }
         
+    }
+    
+    @Suite("Five minutes row")
+    struct FiveMinutesRowTests {
+        
         @Test(
             "Given an initialised converter, when calculating the 5 minutes row, then the correct lamp output is returned",
             arguments: [
@@ -49,6 +54,28 @@ struct DigitalTimeToBerlinClockConverterTests {
             
             // When
             let result = converter.fiveMinutesRow(minutes: minutes)
+            
+            // Then
+            #expect(result == expectedResult)
+        }
+        
+    }
+    
+    @Suite("Single hours row")
+    struct SingleHoursRowTests {
+        
+        @Test(
+            "Given an initialised converter, when calculating the single hours row, then the correct lamp output is returned",
+            arguments: [
+                (hours: 0, expectedResult: "0000"),
+            ]
+        )
+        func singleHoursRow(hours: Int, expectedResult: String) {
+            // Given
+            let converter = DigitalTimeToBerlinClockConverter()
+            
+            // When
+            let result = converter.singleHoursRow(hours: hours)
             
             // Then
             #expect(result == expectedResult)
