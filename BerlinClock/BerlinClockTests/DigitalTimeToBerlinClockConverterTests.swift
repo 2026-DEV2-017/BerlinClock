@@ -87,5 +87,27 @@ struct DigitalTimeToBerlinClockConverterTests {
         }
         
     }
+    
+    @Suite("Five hours row")
+    struct FiveHoursRowTests {
+        
+        @Test(
+            "Given an initialised converter, when calculating the five hours row, then the correct lamp output is returned",
+            arguments: [
+                (hours: 0, expectedResult: "0000"),
+            ]
+        )
+        func fiveHoursRow(hours: Int, expectedResult: String) {
+            // Given
+            let converter = DigitalTimeToBerlinClockConverter()
+            
+            // When
+            let result = converter.fiveHoursRow(hours: hours)
+            
+            // Then
+            #expect(result == expectedResult)
+        }
+        
+    }
 
 }

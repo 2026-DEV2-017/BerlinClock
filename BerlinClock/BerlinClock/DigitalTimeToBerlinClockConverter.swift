@@ -39,4 +39,8 @@ nonisolated struct DigitalTimeToBerlinClockConverter {
         return litString + unlitString
     }
     
+    func fiveHoursRow(hours: Int) -> String {
+        return ""
+    }
+    
 }
