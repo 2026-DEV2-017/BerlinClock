@@ -114,5 +114,27 @@ struct DigitalTimeToBerlinClockConverterTests {
         }
         
     }
+    
+    @Suite("Seconds lamp")
+    struct SecondsLampTests {
+        
+        @Test(
+            "Given an initialised converter, when calculating the seconds lamp, then the correct lamp output is returned",
+            arguments: [
+                (seconds: 0, expectedResult: "Y"),
+            ]
+        )
+        func secondsLamp(seconds: Int, expectedResult: String) {
+            // Given
+            let converter = DigitalTimeToBerlinClockConverter()
+            
+            // When
+            let result = converter.secondsLamp(seconds: seconds)
+            
+            // Then
+            #expect(result == expectedResult)
+        }
+        
+    }
 
 }

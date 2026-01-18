@@ -49,4 +49,8 @@ nonisolated struct DigitalTimeToBerlinClockConverter {
         return litString + unlitString
     }
     
+    func secondsLamp(seconds: Int) -> String {
+        return ""
+    }
+    
 }
