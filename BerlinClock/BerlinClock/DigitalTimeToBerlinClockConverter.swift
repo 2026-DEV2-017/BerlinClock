@@ -40,7 +40,13 @@ nonisolated struct DigitalTimeToBerlinClockConverter {
     }
     
     func fiveHoursRow(hours: Int) -> String {
-        return "0000"
+        let litAmount = hours / 5
+        let unlitAmount = 4 - litAmount
+        
+        let litString = String(repeating: "R", count: litAmount)
+        let unlitString = String(repeating: "0", count: unlitAmount)
+        
+        return litString + unlitString
     }
     
 }
