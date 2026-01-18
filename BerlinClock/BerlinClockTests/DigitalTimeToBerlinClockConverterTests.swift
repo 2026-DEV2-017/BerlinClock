@@ -96,6 +96,10 @@ struct DigitalTimeToBerlinClockConverterTests {
             arguments: [
                 (hours: 0, expectedResult: "0000"),
                 (hours: 23, expectedResult: "RRRR"),
+                (hours: 2, expectedResult: "0000"),
+                (hours: 8, expectedResult: "R000"),
+                (hours: 16, expectedResult: "RRR0"),
+                (hours: 5, expectedResult: "R000"),
             ]
         )
         func fiveHoursRow(hours: Int, expectedResult: String) {
