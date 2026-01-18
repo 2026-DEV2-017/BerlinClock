@@ -1,0 +1,49 @@
+import Testing
+import Combine
+@testable import BerlinClock
+
+@MainActor
+struct BerlinClockModelTests {
+
+    @Test(
+        "Given that the model is started, when an time updates, then the seconds property should be correct",
+        arguments: [
+            ((hours: 0, minutes: 0, seconds: 0), expectedResult: "Y"),
+        ]
+    )
+    func seconds(time: (hours: Int, minutes: Int, seconds: Int), expectedResult: String) {
+        // Given
+        let timeProvider = MockTimeProvider()
+        let model = BerlinClockModel(timeProvider: timeProvider)
+        model.start()
+        
+        // When
+        timeProvider.updateTime(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
+        
+        // Then
+        #expect(model.seconds == expectedResult)
+    }
+
+}
+
+struct MockTimeProvider: TimeProviding {
+    
+    var updatePublisher: AnyPublisher<(hours: Int, minutes: Int, seconds: Int), Never> {
+        updateSubject.eraseToAnyPublisher()
+    }
+    
+    private let updateSubject = PassthroughSubject<(hours: Int, minutes: Int, seconds: Int), Never>()
+    
+    func start() {
+        
+    }
+    
+    func stop() {
+        
+    }
+    
+    func updateTime(hours: Int, minutes: Int, seconds: Int) {
+        updateSubject.send((hours: hours, minutes: minutes, seconds: seconds))
+    }
+    
+}
