@@ -50,7 +50,14 @@ nonisolated struct DigitalTimeToBerlinClockConverter {
     }
     
     func secondsLamp(seconds: Int) -> String {
-        return "Y"
+        let remainder = seconds % 2
+        let isEven = remainder == 0
+        
+        if isEven {
+            return "Y"
+        } else {
+            return "0"
+        }
     }
     
 }
