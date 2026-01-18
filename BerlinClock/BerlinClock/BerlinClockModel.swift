@@ -22,16 +22,20 @@ final class BerlinClockModel {
     
     @MainActor
     deinit {
-        self.cancellable?.cancel()
-        self.cancellable = nil
+        cancellable?.cancel()
+        cancellable = nil
     }
     
     func start() {
-        
+        cancellable = timeProvider.updatePublisher
+            .sink { [unowned self] time in
+                self.seconds = self.converter.secondsLamp(seconds: time.seconds)
+            }
     }
     
     func stop() {
-        
+        cancellable?.cancel()
+        cancellable = nil
     }
     
 }
