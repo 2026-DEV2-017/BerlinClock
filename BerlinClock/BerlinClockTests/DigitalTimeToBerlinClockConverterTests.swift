@@ -123,6 +123,9 @@ struct DigitalTimeToBerlinClockConverterTests {
             arguments: [
                 (seconds: 0, expectedResult: "Y"),
                 (seconds: 59, expectedResult: "0"),
+                (seconds: 1, expectedResult: "0"),
+                (seconds: 25, expectedResult: "0"),
+                (seconds: 32, expectedResult: "Y"),
             ]
         )
         func secondsLamp(seconds: Int, expectedResult: String) {
