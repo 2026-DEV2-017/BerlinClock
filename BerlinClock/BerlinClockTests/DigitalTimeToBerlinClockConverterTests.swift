@@ -122,6 +122,7 @@ struct DigitalTimeToBerlinClockConverterTests {
             "Given an initialised converter, when calculating the seconds lamp, then the correct lamp output is returned",
             arguments: [
                 (seconds: 0, expectedResult: "Y"),
+                (seconds: 59, expectedResult: "0"),
             ]
         )
         func secondsLamp(seconds: Int, expectedResult: String) {
