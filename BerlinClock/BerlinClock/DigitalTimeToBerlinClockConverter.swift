@@ -4,12 +4,7 @@ nonisolated struct DigitalTimeToBerlinClockConverter {
     
     func singleMinutesRow(minutes: Int) -> String {
         let litAmount = minutes % 5
-        let unlitAmount = 4 - litAmount
-        
-        let litString = String(repeating: "Y", count: litAmount)
-        let unlitString = String(repeating: "0", count: unlitAmount)
-        
-        return litString + unlitString
+        return lampString(litAmount: litAmount, litIndicator: "Y", totalLamps: 4)
     }
     
     func fiveMinutesRow(minutes: Int) -> String {
@@ -31,27 +26,26 @@ nonisolated struct DigitalTimeToBerlinClockConverter {
     
     func singleHoursRow(hours: Int) -> String {
         let litAmount = hours % 5
-        let unlitAmount = 4 - litAmount
-        
-        let litString = String(repeating: "R", count: litAmount)
-        let unlitString = String(repeating: "0", count: unlitAmount)
-        
-        return litString + unlitString
+        return lampString(litAmount: litAmount, litIndicator: "R", totalLamps: 4)
     }
     
     func fiveHoursRow(hours: Int) -> String {
         let litAmount = hours / 5
-        let unlitAmount = 4 - litAmount
-        
-        let litString = String(repeating: "R", count: litAmount)
-        let unlitString = String(repeating: "0", count: unlitAmount)
-        
-        return litString + unlitString
+        return lampString(litAmount: litAmount, litIndicator: "R", totalLamps: 4)
     }
     
     func secondsLamp(seconds: Int) -> String {
         let isEven = seconds.isMultiple(of: 2)
         return isEven ? "Y" : "0"
+    }
+    
+    private func lampString(litAmount: Int, litIndicator: String, totalLamps: Int) -> String {
+        let unlitAmount = totalLamps - litAmount
+        
+        let litString = String(repeating: "Y", count: litAmount)
+        let unlitString = String(repeating: "0", count: unlitAmount)
+        
+        return litString + unlitString
     }
     
 }
