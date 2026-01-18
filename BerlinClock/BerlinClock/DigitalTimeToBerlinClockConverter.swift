@@ -42,7 +42,7 @@ nonisolated struct DigitalTimeToBerlinClockConverter {
     private func lampString(litAmount: Int, litIndicator: String, totalLamps: Int) -> String {
         let unlitAmount = totalLamps - litAmount
         
-        let litString = String(repeating: "Y", count: litAmount)
+        let litString = String(repeating: litIndicator, count: litAmount)
         let unlitString = String(repeating: "0", count: unlitAmount)
         
         return litString + unlitString
