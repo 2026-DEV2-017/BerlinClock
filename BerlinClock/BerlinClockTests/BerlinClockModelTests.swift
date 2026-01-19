@@ -37,7 +37,7 @@ struct BerlinClockModelTests {
             ((hours: 16, minutes: 35, seconds: 0), expectedResult: "RRR0"),
         ]
     )
-    func fiveHours(time: (hours: Int, minutes: Int, seconds: Int), expectedResult: String) async throws {
+    func fiveHours(time: (hours: Int, minutes: Int, seconds: Int), expectedResult: String) {
         // Given
         let timeProvider = MockTimeProvider()
         let model = BerlinClockModel(timeProvider: timeProvider)
@@ -46,6 +46,23 @@ struct BerlinClockModelTests {
         timeProvider.updateTime(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
         
         #expect(model.fiveHours == expectedResult)
+    }
+    
+    @Test(
+        "Given that the model is started, when the time updates, then the single hours property is correct",
+        arguments: [
+            ((hours: 0, minutes: 0, seconds: 0), expectedResult: "0000"),
+        ]
+    )
+    func singleHours(time: (hours: Int, minutes: Int, seconds: Int), expectedResult: String) {
+        // Given
+        let timeProvider = MockTimeProvider()
+        let model = BerlinClockModel(timeProvider: timeProvider)
+        model.start()
+        
+        timeProvider.updateTime(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
+        
+        #expect(model.singleHours == expectedResult)
     }
 
 }
