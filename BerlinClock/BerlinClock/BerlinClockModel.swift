@@ -31,6 +31,7 @@ final class BerlinClockModel {
             .sink { [unowned self] time in
                 self.seconds = self.converter.secondsLamp(seconds: time.seconds)
                 self.fiveHours = self.converter.fiveHoursRow(hours: time.hours)
+                self.singleHours = self.converter.singleHoursRow(hours: time.hours)
             }
     }
     
