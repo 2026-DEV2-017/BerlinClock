@@ -43,8 +43,10 @@ struct BerlinClockModelTests {
         let model = BerlinClockModel(timeProvider: timeProvider)
         model.start()
         
+        // When
         timeProvider.updateTime(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
         
+        // Then
         #expect(model.fiveHours == expectedResult)
     }
     
@@ -60,8 +62,10 @@ struct BerlinClockModelTests {
         let model = BerlinClockModel(timeProvider: timeProvider)
         model.start()
         
+        // When
         timeProvider.updateTime(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
         
+        // Then
         #expect(model.singleHours == expectedResult)
     }
 
