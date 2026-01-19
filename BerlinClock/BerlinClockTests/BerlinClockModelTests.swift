@@ -7,9 +7,11 @@ struct BerlinClockModelTests {
 
     @Test("Given that the model is initialised, when inspecting the properties, then they are set to correct state")
     func initialise() {
+        // Given
         let timeProvider = MockTimeProvider()
         let model = BerlinClockModel(timeProvider: timeProvider)
         
+        // When - Then
         #expect(model.seconds == "0")
         #expect(model.fiveHours == "0000")
         #expect(model.singleHours == "0000")
