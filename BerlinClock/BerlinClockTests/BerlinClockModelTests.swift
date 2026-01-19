@@ -72,6 +72,25 @@ struct BerlinClockModelTests {
         // Then
         #expect(model.singleHours == expectedResult)
     }
+    
+    @Test(
+        "Given that the model is started, when the time updates, then the five minutes property is correct",
+        arguments: [
+            ((hours: 0, minutes: 0, seconds: 0), expectedResult: "00000000000"),
+        ]
+    )
+    func fiveMinutes(time: (hours: Int, minutes: Int, seconds: Int), expectedResult: String) {
+        // Given
+        let timeProvider = MockTimeProvider()
+        let model = BerlinClockModel(timeProvider: timeProvider)
+        model.start()
+        
+        // When
+        timeProvider.updateTime(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
+        
+        // Then
+        #expect(model.fiveMinutes == expectedResult)
+    }
 
 }
 
