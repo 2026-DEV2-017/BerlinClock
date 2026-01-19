@@ -30,6 +30,7 @@ final class BerlinClockModel {
         cancellable = timeProvider.updatePublisher
             .sink { [unowned self] time in
                 self.seconds = self.converter.secondsLamp(seconds: time.seconds)
+                self.fiveHours = self.converter.fiveHoursRow(hours: time.hours)
             }
     }
     
