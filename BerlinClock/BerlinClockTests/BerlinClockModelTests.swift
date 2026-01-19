@@ -129,14 +129,6 @@ struct MockTimeProvider: TimeProviding {
     
     private let updateSubject = PassthroughSubject<(hours: Int, minutes: Int, seconds: Int), Never>()
     
-    func start() {
-        
-    }
-    
-    func stop() {
-        
-    }
-    
     func updateTime(hours: Int, minutes: Int, seconds: Int) {
         updateSubject.send((hours: hours, minutes: minutes, seconds: seconds))
     }

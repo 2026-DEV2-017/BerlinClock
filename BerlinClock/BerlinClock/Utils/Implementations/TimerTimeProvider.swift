@@ -20,10 +20,4 @@ struct TimerTimeProvider: TimeProviding {
             .eraseToAnyPublisher()
     }()
     
-    func start() {
-    }
-    
-    func stop() {
-    }
-    
 }
