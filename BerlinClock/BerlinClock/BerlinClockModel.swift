@@ -33,6 +33,7 @@ final class BerlinClockModel {
                 self.fiveHours = self.converter.fiveHoursRow(hours: time.hours)
                 self.singleHours = self.converter.singleHoursRow(hours: time.hours)
                 self.fiveMinutes = self.converter.fiveMinutesRow(minutes: time.minutes)
+                self.singleMinutes = self.converter.singleMinutesRow(minutes: time.minutes)
             }
     }
     
