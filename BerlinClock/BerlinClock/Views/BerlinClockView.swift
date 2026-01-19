@@ -10,13 +10,7 @@ struct BerlinClockView: View {
                 .fill(model.seconds == "Y" ? Color.yellow : .clear)
                 .strokeBorder(lineWidth: 2)
             
-            HStack {
-                ForEach(Array(model.fiveHours.enumerated()), id: \.offset) { _, character in
-                    Rectangle()
-                        .fill(character == "R" ? Color.red : .clear)
-                        .strokeBorder(lineWidth: 2)
-                }
-            }
+            LampRow(pattern: model.fiveHours)
         }
         .padding()
         .onAppear {
