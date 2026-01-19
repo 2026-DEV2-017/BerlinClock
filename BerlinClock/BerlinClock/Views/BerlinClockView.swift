@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BerlinClockView: View {
     
-    @State private var model = BerlinClockModel(timeProvider: TimerTimeProvider())
+    let model: BerlinClockModel
     
     var body: some View {
         VStack {
@@ -23,8 +23,10 @@ struct BerlinClockView: View {
             model.stop()
         }
     }
+    
 }
 
 #Preview {
-    BerlinClockView()
+    @Previewable @State var model = BerlinClockModel(timeProvider: TimerTimeProvider())
+    BerlinClockView(model: model)
 }
