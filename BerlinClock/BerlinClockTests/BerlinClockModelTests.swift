@@ -6,7 +6,7 @@ import Combine
 struct BerlinClockModelTests {
 
     @Test(
-        "Given that the model is started, when an time updates, then the seconds property should be correct",
+        "Given that the model is started, when the time updates, then the seconds property is correct",
         arguments: [
             ((hours: 0, minutes: 0, seconds: 0), expectedResult: "Y"),
             ((hours: 0, minutes: 0, seconds: 1), expectedResult: "0"),
@@ -25,6 +25,23 @@ struct BerlinClockModelTests {
         
         // Then
         #expect(model.seconds == expectedResult)
+    }
+    
+    @Test(
+        "Given that the model is started, when the time updates, then the five hours property is correct",
+        arguments: [
+            ((hours: 0, minutes: 0, seconds: 0), expectedResult: "0000"),
+        ]
+    )
+    func fiveHours(time: (hours: Int, minutes: Int, seconds: Int), expectedResult: String) async throws {
+        // Given
+        let timeProvider = MockTimeProvider()
+        let model = BerlinClockModel(timeProvider: timeProvider)
+        model.start()
+        
+        timeProvider.updateTime(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
+        
+        #expect(model.fiveHours == expectedResult)
     }
 
 }
