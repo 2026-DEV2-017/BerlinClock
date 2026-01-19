@@ -1,6 +1,7 @@
 import Combine
 import Foundation
 
+/// Implementation of ``TimeProviding`` that provides updates based on a timer.
 struct TimerTimeProvider: TimeProviding {
     
     let updatePublisher: AnyPublisher<(hours: Int, minutes: Int, seconds: Int), Never> = {
