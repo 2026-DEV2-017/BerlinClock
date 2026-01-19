@@ -11,6 +11,9 @@ struct BerlinClockView: View {
                 .strokeBorder(lineWidth: 2)
             
             LampRow(pattern: model.fiveHours)
+            LampRow(pattern: model.singleHours)
+            LampRow(pattern: model.fiveMinutes)
+            LampRow(pattern: model.singleMinutes)
         }
         .padding()
         .onAppear {
