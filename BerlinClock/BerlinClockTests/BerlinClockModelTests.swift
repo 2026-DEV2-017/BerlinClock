@@ -54,6 +54,10 @@ struct BerlinClockModelTests {
         "Given that the model is started, when the time updates, then the single hours property is correct",
         arguments: [
             ((hours: 0, minutes: 0, seconds: 0), expectedResult: "0000"),
+            ((hours: 23, minutes: 59, seconds: 59), expectedResult: "RRR0"),
+            ((hours: 2, minutes: 4, seconds: 0), expectedResult: "RR00"),
+            ((hours: 8, minutes: 23, seconds: 0), expectedResult: "RRR0"),
+            ((hours: 14, minutes: 35, seconds: 0), expectedResult: "RRRR"),
         ]
     )
     func singleHours(time: (hours: Int, minutes: Int, seconds: Int), expectedResult: String) {
