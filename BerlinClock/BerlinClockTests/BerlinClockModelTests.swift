@@ -5,6 +5,18 @@ import Combine
 @MainActor
 struct BerlinClockModelTests {
 
+    @Test("Given that the model is initialised, when inspecting the properties, then they are set to correct state")
+    func initialise() {
+        let timeProvider = MockTimeProvider()
+        let model = BerlinClockModel(timeProvider: timeProvider)
+        
+        #expect(model.seconds == "0")
+        #expect(model.fiveHours == "0000")
+        #expect(model.singleHours == "0000")
+        #expect(model.fiveMinutes == "00000000000")
+        #expect(model.singleMinutes == "0000")
+    }
+    
     @Test(
         "Given that the model is started, when the time updates, then the seconds property is correct",
         arguments: [
