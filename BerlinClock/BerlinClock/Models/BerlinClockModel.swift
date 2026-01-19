@@ -5,11 +5,11 @@ import SwiftUI
 @Observable
 final class BerlinClockModel {
     
-    private(set) var seconds: String = ""
-    private(set) var fiveHours: String = ""
-    private(set) var singleHours: String = ""
-    private(set) var fiveMinutes: String = ""
-    private(set) var singleMinutes: String = ""
+    private(set) var seconds: String = "0"
+    private(set) var fiveHours: String = "0000"
+    private(set) var singleHours: String = "0000"
+    private(set) var fiveMinutes: String = "00000000000"
+    private(set) var singleMinutes: String = "0000"
     
     private var cancellable: AnyCancellable?
     
